@@ -6,9 +6,7 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {
-  //write your code here
-
-  function generarExcusa() {
+  function excuseGenerator() {
     let who = ["mi novio", "Pablo", "Pabluchi", "mi amor"];
     let action = [
       "ha apetecido",
@@ -30,17 +28,24 @@ window.onload = function() {
       "Cuando nos hemos visto"
     ];
 
-    let sujeto = who[Math.floor(Math.random() * who.length)];
-    let accion = action[Math.floor(Math.random() * action.length)];
-    let que = what[Math.floor(Math.random() * what.length)];
-    let cuando = when[Math.floor(Math.random() * when.length)];
+    function getElementArray(array) {
+      let arrayResult = Math.floor(Math.random(-1) * array.length);
+      return arrayResult;
+    }
 
-    return `${cuando} ${sujeto} ${accion} ${que} .`;
+    return (
+      who[getElementArray(who)] +
+      " " +
+      action[getElementArray(action)] +
+      " " +
+      what[getElementArray(what)] +
+      " " +
+      when[getElementArray(when)]
+    );
   }
-
-  document.getElementById("excusa").innerText = generarExcusa();
+  document.getElementById("excusa").innerText = excuseGenerator();
   document.getElementById("botonExcusa").addEventListener("click", function() {
-    document.getElementById("excusa").innerText = generarExcusa();
+    document.getElementById("excusa").innerText = excuseGenerator();
   });
   console.log("Hello Rigo from the console!");
 };
